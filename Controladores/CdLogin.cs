@@ -23,9 +23,10 @@ namespace Datos
 
                 cE.tipoUsuario = leer.GetString(1);
 
+                MessageBox.Show("" + cE.tipoUsuario);
                 //Principal principal = new Principal();
 
-                if (cE.tipoUsuario == "ADMIN")
+                if (cE.tipoUsuario == "Admin")
                 {
                     //principal.ibtnEmpleados.enabled = true;
                 }
@@ -37,6 +38,8 @@ namespace Datos
             else
             {
                 MessageBox.Show("Usuario y contraseña incorrectos");
+                //prueba
+                MessageBox.Show("" + cE.tipoUsuario);
                 
             }
             conectar.Close();

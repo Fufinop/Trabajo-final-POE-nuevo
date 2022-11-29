@@ -1,14 +1,6 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using System.Diagnostics.Eventing.Reader;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Entidad;
 using FontAwesome.Sharp;
 
 namespace Trabajo_final_Front_End
@@ -114,6 +106,7 @@ namespace Trabajo_final_Front_End
         {
             ActivateButton(sender, RGBColors.color1);
             abriFormHijo(new EmpleadosVista());
+
         }
 
         private void ibtnClientes_Click(object sender, EventArgs e)
@@ -207,18 +200,6 @@ namespace Trabajo_final_Front_End
             Application.Exit();
         }
 
-        private void btnVentana_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -239,14 +220,6 @@ namespace Trabajo_final_Front_End
         {
 
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -255,7 +228,6 @@ namespace Trabajo_final_Front_End
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            
         }
 
         

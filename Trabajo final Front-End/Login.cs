@@ -1,22 +1,12 @@
 ﻿using Entidad;
 using Negocio;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Trabajo_final_Front_End
 {
     public partial class Login : Form
     {
-        CnLogin cnLogin = new CnLogin();
-        private object tipo;
+        
+        public object tipo;
 
         public Login()
         {
@@ -25,13 +15,14 @@ namespace Trabajo_final_Front_End
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            
 
+            CnLogin cnLogin = new CnLogin();
             bool resultado;
             CeLogin ceLogin = new CeLogin();
             
             ceLogin.LoginName = txtUsuario.Text;
             ceLogin.Password = txtPassword.Text;
+            ceLogin.tipoUsuario = cbxTipo.Text;
 
             resultado = cnLogin.validarDatos(ceLogin);
 
@@ -41,12 +32,12 @@ namespace Trabajo_final_Front_End
             } 
 
             cnLogin.ConectarUsuario(ceLogin);
-            Principal principal = new Principal(tipo);
+            
 
             //this.Close();
             if (cbxTipo.Text == "Admin")
             {
-                tipo = cbxTipo.Text;   
+
                 
             }
             else if (cbxTipo.Text == "Empleado")
@@ -58,7 +49,9 @@ namespace Trabajo_final_Front_End
                 MessageBox.Show("Tipo de usuario no valido");
             }
 
-            this.Close();
+            Principal principal = new Principal();
+            principal.Show();
+            this.Hide();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -68,6 +61,11 @@ namespace Trabajo_final_Front_End
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
+        }
+
+        private void lbprueba_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
