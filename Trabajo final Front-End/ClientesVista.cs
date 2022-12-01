@@ -166,6 +166,20 @@ namespace Trabajo_final_Front_End
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            CeCliente ceCliente = new CeCliente();
+            ceCliente.Busqueda = tbxPrueba.Text;
+            try
+            {
+                dgvCliente.DataSource = cnCliente.buscarDatos(ceCliente).Tables["tb1"];
+                DataGridViewImageColumn column = (DataGridViewImageColumn)dgvCliente.Columns[7];
+                column.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
+
             
         }
         private void btnEliminar_Click_3(object sender, EventArgs e)

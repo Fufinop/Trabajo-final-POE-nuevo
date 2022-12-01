@@ -11,5 +11,6 @@
         public string Estatus { get; set; }
         public byte [] Imagen { get; set; }
         public string Direccion { get; set; }
+        public string Busqueda { get; set; }
     }
 }

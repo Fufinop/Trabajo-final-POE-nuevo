@@ -132,5 +132,20 @@ namespace Controladores
 
             return dataset;
         }
+
+        public DataSet buscarDatos(CeCliente cE)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
+            mySqlConnection.Open();
+            string Querry = "SELECT * FROM cliente WHERE nombre LIKE '%" + cE.Busqueda + "%' OR apellido LIKE '%" + cE.Busqueda + "%';";
+            MySqlDataAdapter adaptador;
+            DataSet dataset = new DataSet();
+
+            adaptador = new MySqlDataAdapter(Querry, mySqlConnection);
+            adaptador.Fill(dataset, "tb1");
+
+
+            return dataset;
+        }
     }
 }

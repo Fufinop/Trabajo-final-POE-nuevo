@@ -79,5 +79,9 @@ namespace Negocio
         {
             return cdCliente.Listar();
         }
+        public DataSet buscarDatos(CeCliente cE)
+        {
+            return cdCliente.buscarDatos(cE);
+        }
     }
 }
