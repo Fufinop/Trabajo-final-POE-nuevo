@@ -32,26 +32,23 @@ namespace Trabajo_final_Front_End
             } 
 
             cnLogin.ConectarUsuario(ceLogin);
-            
+            Principal principal = new Principal();
 
             //this.Close();
             if (cbxTipo.Text == "Admin")
             {
+                principal.Show();
+                this.Hide();
 
-                
             }
             else if (cbxTipo.Text == "Empleado")
             {
-
-            }
-            else
-            {
-                MessageBox.Show("Tipo de usuario no valido");
+                principal.Show();
+                this.Hide();
             }
 
-            Principal principal = new Principal();
-            principal.Show();
-            this.Hide();
+            
+            
         }
 
         private void Login_Load(object sender, EventArgs e)

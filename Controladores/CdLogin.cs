@@ -38,8 +38,6 @@ namespace Datos
             else
             {
                 MessageBox.Show("Usuario y contraseña incorrectos");
-                //prueba
-                MessageBox.Show("" + cE.tipoUsuario);
                 
             }
             conectar.Close();
