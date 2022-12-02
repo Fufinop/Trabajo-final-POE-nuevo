@@ -1,11 +1,8 @@
-﻿using Datos;
+﻿using Controladores;
+using Datos;
 using Entidad;
-using System;
-using System.Collections.Generic;
+using Modelos;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -62,6 +59,11 @@ namespace Negocio
         public DataSet obtenerDatos()
         {
             return cdVentas.Listar();
+        }
+
+        public DataSet buscarDatos(CeVentas cE)
+        {
+            return cdVentas.buscarDatos(cE);
         }
     }
 }

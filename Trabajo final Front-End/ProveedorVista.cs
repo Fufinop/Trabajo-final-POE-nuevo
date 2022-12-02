@@ -1,9 +1,5 @@
-﻿using Controladores;
-using Entidad;
-using Modelos;
-using MySql.Data.MySqlClient;
+﻿using Entidad;
 using Negocio;
-using System.Drawing.Imaging;
 
 namespace Trabajo_final_Front_End
 {
@@ -90,14 +86,16 @@ namespace Trabajo_final_Front_End
             limpiarForm();
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+            tbxPrueba.Text = string.Empty;
         }
-
-        
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+
+            cargarDatos();
+            tbxPrueba.Text= string.Empty;
         }
 
         private void btnLimpiar_Click_2(object sender, EventArgs e)
@@ -111,8 +109,6 @@ namespace Trabajo_final_Front_End
             }
         }
 
-        
-
         private void btnNuevo_Click_2(object sender, EventArgs e)
         {
             limpiarForm();
@@ -123,6 +119,8 @@ namespace Trabajo_final_Front_End
             btnEliminar.Visible = false;
             tabControl1.TabPages.Remove(tabPage2);
             tabControl1.TabPages.Add(tabPage1);
+
+            pictureBox2.Image = null;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -155,12 +153,22 @@ namespace Trabajo_final_Front_End
             cbxEstatus.Text = dgvProveedor.CurrentRow.Cells["Estatus"].Value.ToString();
             pictureBox2.Image = Image.FromStream(Imagen.byteToImg(dgvProveedor.CurrentRow.Cells["Foto"].Value as byte[]));
             
-            
-            
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            
+            CeProveedor ceProveedor = new CeProveedor();
+            ceProveedor.Busqueda = tbxPrueba.Text;
+            try
+            {
+                dgvProveedor.DataSource = cnProveedor.buscarDatos(ceProveedor).Tables["tb1"];
+                DataGridViewImageColumn column = (DataGridViewImageColumn)dgvProveedor.Columns[8];
+                column.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
         }
         private void btnEliminar_Click_3(object sender, EventArgs e)
         {
@@ -177,26 +185,6 @@ namespace Trabajo_final_Front_End
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
         }
-
-        //Metodos sin usar
-        
-        
-        private void lbImagen_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        
-        
-        private void tabPage2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-        
-        
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofdSeleccionar = new OpenFileDialog();
@@ -219,6 +207,55 @@ namespace Trabajo_final_Front_End
                 
             }
 
+
+        }
+
+
+        private void tbxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void tbxtelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validacion de solo numeros
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void tbxProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void lbImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void tabPage2_Click_1(object sender, EventArgs e)
+        {
 
         }
 

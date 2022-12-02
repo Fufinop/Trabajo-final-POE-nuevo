@@ -1,11 +1,6 @@
 ﻿using Entidad;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datos
 {
@@ -122,6 +117,21 @@ namespace Datos
             MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
             mySqlConnection.Open();
             string Querry = "SELECT * FROM proveedor WHERE Estatus = 'Activo' LIMIT 1000;";
+            MySqlDataAdapter adaptador;
+            DataSet dataset = new DataSet();
+
+            adaptador = new MySqlDataAdapter(Querry, mySqlConnection);
+            adaptador.Fill(dataset, "tb1");
+
+
+            return dataset;
+        }
+
+        public DataSet buscarDatos(CeProveedor cE)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
+            mySqlConnection.Open();
+            string Querry = "SELECT * FROM proveedor WHERE Nombre LIKE '%" + cE.Busqueda + "%' OR Producto LIKE '%" + cE.Busqueda + "%' OR Telefono LIKE '%" + cE.Busqueda + "%';";
             MySqlDataAdapter adaptador;
             DataSet dataset = new DataSet();
 

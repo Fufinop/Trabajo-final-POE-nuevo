@@ -1,4 +1,6 @@
-﻿namespace Entidad
+﻿using System.Security.Principal;
+
+namespace Entidad
 {
     public class CeNegocio
     {

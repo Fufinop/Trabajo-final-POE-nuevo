@@ -130,6 +130,7 @@
             this.tbxStock.Name = "tbxStock";
             this.tbxStock.Size = new System.Drawing.Size(196, 34);
             this.tbxStock.TabIndex = 65;
+            this.tbxStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxStock_KeyPress);
             // 
             // pictureBox2
             // 
@@ -182,6 +183,7 @@
             // cbxEstatus
             // 
             this.cbxEstatus.BackColor = System.Drawing.Color.White;
+            this.cbxEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstatus.Enabled = false;
             this.cbxEstatus.Items.AddRange(new object[] {
             "Activo",
@@ -266,6 +268,7 @@
             this.tbxNombre.Name = "tbxNombre";
             this.tbxNombre.Size = new System.Drawing.Size(196, 34);
             this.tbxNombre.TabIndex = 44;
+            this.tbxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxNombre_KeyPress);
             // 
             // tbxDescripcion
             // 
@@ -413,9 +416,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(20, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 25);
+            this.label1.Size = new System.Drawing.Size(194, 25);
             this.label1.TabIndex = 54;
-            this.label1.Text = "Buscar Empleado:";
+            this.label1.Text = "Buscar Producto:";
             // 
             // tbxPrueba
             // 

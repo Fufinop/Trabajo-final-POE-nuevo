@@ -1,5 +1,7 @@
-﻿using Datos;
+﻿using Controladores;
+using Datos;
 using Entidad;
+using Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,9 +77,9 @@ namespace Negocio
             return cdInventario.Listar();
         }
 
-        public void buscarEm(CeEmpleado cE)
+        public DataSet buscarDatos(CeInventario cE)
         {
-            
+            return cdInventario.buscarDatos(cE);
         }
     }
 }

@@ -1,12 +1,6 @@
 ﻿using Entidad;
-using Modelos;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datos
 {
@@ -44,29 +38,6 @@ namespace Datos
                 mySqlConnection.Close();
 
                 MessageBox.Show("Registro creado");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex);
-                MessageBox.Show("Hubo un error o repetiste el id");
-
-            }
-
-        }
-        public void buscar(CeEmpleado cE)
-        {
-            try
-            {
-                MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
-                mySqlConnection.Open();
-                string Query = "SELECT * FROM empleado WHERE Nombres LIKE '%" + cE.Busqueda +"%' OR Apellidos LIKE '%" + cE.Busqueda +"%' LIMIT 100;";
-                MySqlCommand mySqlCommand = new MySqlCommand(Query, mySqlConnection);
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-
-                MessageBox.Show("Busqueda realizada");
-                MessageBox.Show("" + cE.Busqueda);
-                MessageBox.Show(Query);
             }
             catch (Exception ex)
             {
@@ -148,6 +119,21 @@ namespace Datos
             MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
             mySqlConnection.Open();
             string Querry = "SELECT * FROM empleado WHERE Estatus = 'Activo' LIMIT 1000;";
+            MySqlDataAdapter adaptador;
+            DataSet dataset = new DataSet();
+
+            adaptador = new MySqlDataAdapter(Querry, mySqlConnection);
+            adaptador.Fill(dataset, "tb1");
+
+
+            return dataset;
+        }
+
+        public DataSet buscarDatos(CeEmpleado cE)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
+            mySqlConnection.Open();
+            string Querry = "SELECT * FROM empleado WHERE nombres LIKE '%" + cE.Busqueda + "%' OR apellidos LIKE '%" + cE.Busqueda + "%';";
             MySqlDataAdapter adaptador;
             DataSet dataset = new DataSet();
 

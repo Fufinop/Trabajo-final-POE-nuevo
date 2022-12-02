@@ -126,6 +126,7 @@
             // cbxEstatus
             // 
             this.cbxEstatus.BackColor = System.Drawing.Color.White;
+            this.cbxEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstatus.Enabled = false;
             this.cbxEstatus.Items.AddRange(new object[] {
             "Activo",
@@ -180,6 +181,7 @@
             this.tbxCiudad.Name = "tbxCiudad";
             this.tbxCiudad.Size = new System.Drawing.Size(196, 34);
             this.tbxCiudad.TabIndex = 45;
+            this.tbxCiudad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxCiudad_KeyPress);
             // 
             // tbxDireccion
             // 
@@ -194,6 +196,7 @@
             this.tbxSucursal.Name = "tbxSucursal";
             this.tbxSucursal.Size = new System.Drawing.Size(196, 34);
             this.tbxSucursal.TabIndex = 43;
+            this.tbxSucursal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSucursal_KeyPress);
             // 
             // nudNegocio
             // 

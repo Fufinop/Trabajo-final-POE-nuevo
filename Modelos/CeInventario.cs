@@ -9,5 +9,6 @@
         public string Stock { get; set; }
         public byte[] Imagen { get; set; }
         public string Estatus { get; set; }
+        public string Busqueda { get; set; }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Datos;
+﻿using Controladores;
+using Datos;
 using Entidad;
+using Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,14 +63,13 @@ namespace Negocio
         {
             cdNegocio.eliminarDatos(cE);
         }
-        public void buscarDatos(CeNegocio cE)
-        {
-            cdNegocio.buscarDatos(cE);
-        }
-
         public DataSet obtenerDatos()
         {
             return cdNegocio.Listar();
+        }
+        public DataSet buscarDatos(CeNegocio cE)
+        {
+            return cdNegocio.buscarDatos(cE);
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using Controladores;
-using Entidad;
-using Modelos;
-using MySql.Data.MySqlClient;
+﻿using Entidad;
 using Negocio;
-using System.Drawing.Imaging;
 
 namespace Trabajo_final_Front_End
 {
@@ -72,6 +68,7 @@ namespace Trabajo_final_Front_End
             limpiarForm();
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+            tbxPrueba.Text = string.Empty;
         }
 
         
@@ -80,6 +77,9 @@ namespace Trabajo_final_Front_End
         {
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+            tbxPrueba.Text = string.Empty;
+
+            cargarDatos();
         }
 
         private void btnLimpiar_Click_2(object sender, EventArgs e)
@@ -136,7 +136,18 @@ namespace Trabajo_final_Front_End
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            
+            CeVentas ceVentas = new CeVentas();
+            ceVentas.Busqueda = tbxPrueba.Text;
+            try
+            {
+                dgvVentas.DataSource = cnVentas.buscarDatos(ceVentas).Tables["tb1"];
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
         }
         private void btnEliminar_Click_3(object sender, EventArgs e)
         {
@@ -153,33 +164,49 @@ namespace Trabajo_final_Front_End
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
         }
-
-        //Metodos sin usar
-        
-        
-        private void lbImagen_Click(object sender, EventArgs e)
+        private void tbxNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
+
+        private void tbxPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validacion de solo numeros
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void tbxProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+        //Metodos sin usar
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        
-        
+
+
         private void tabPage2_Click_1(object sender, EventArgs e)
         {
 
         }
-        
-        
-        
-
-        private void EmpleadosVista_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lbSalario_Click(object sender, EventArgs e)
         {
 

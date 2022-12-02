@@ -144,6 +144,7 @@
             this.cbxTelefono.Name = "cbxTelefono";
             this.cbxTelefono.Size = new System.Drawing.Size(196, 34);
             this.cbxTelefono.TabIndex = 68;
+            this.cbxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxTelefono_KeyPress);
             // 
             // lbTelefono
             // 
@@ -226,6 +227,7 @@
             // cbxEstatus
             // 
             this.cbxEstatus.BackColor = System.Drawing.Color.White;
+            this.cbxEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstatus.Enabled = false;
             this.cbxEstatus.Items.AddRange(new object[] {
             "Activo",
@@ -305,6 +307,7 @@
             this.tbxNombre.Size = new System.Drawing.Size(196, 34);
             this.tbxNombre.TabIndex = 45;
             this.tbxNombre.TextChanged += new System.EventHandler(this.tbxNombre_TextChanged);
+            this.tbxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxNombre_KeyPress);
             // 
             // tbxApellidos
             // 
@@ -313,6 +316,7 @@
             this.tbxApellidos.Size = new System.Drawing.Size(196, 34);
             this.tbxApellidos.TabIndex = 44;
             this.tbxApellidos.TextChanged += new System.EventHandler(this.tbxApellidos_TextChanged);
+            this.tbxApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxApellidos_KeyPress);
             // 
             // tbxDireccion
             // 

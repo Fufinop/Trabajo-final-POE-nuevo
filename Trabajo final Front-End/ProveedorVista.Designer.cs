@@ -161,6 +161,7 @@
             this.tbxProducto.Name = "tbxProducto";
             this.tbxProducto.Size = new System.Drawing.Size(196, 34);
             this.tbxProducto.TabIndex = 69;
+            this.tbxProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxProducto_KeyPress);
             // 
             // tbxCodigoProveedor
             // 
@@ -249,6 +250,7 @@
             // cbxEstatus
             // 
             this.cbxEstatus.BackColor = System.Drawing.Color.White;
+            this.cbxEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstatus.Enabled = false;
             this.cbxEstatus.Items.AddRange(new object[] {
             "Activo",
@@ -326,6 +328,7 @@
             this.tbxNombre.Name = "tbxNombre";
             this.tbxNombre.Size = new System.Drawing.Size(196, 34);
             this.tbxNombre.TabIndex = 45;
+            this.tbxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxNombre_KeyPress);
             // 
             // tbxDireccion
             // 
@@ -340,6 +343,7 @@
             this.tbxtelefono.Name = "tbxtelefono";
             this.tbxtelefono.Size = new System.Drawing.Size(196, 34);
             this.tbxtelefono.TabIndex = 43;
+            this.tbxtelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxtelefono_KeyPress);
             // 
             // nudProveedor
             // 

@@ -18,5 +18,6 @@ namespace Entidad
         public string Producto { get; set; }
         public string Estatus { get; set; }
         public byte[] Foto { get; set; }
+        public string Busqueda { get; set; }
     }
 }

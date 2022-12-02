@@ -1,11 +1,7 @@
 ﻿using Entidad;
+using Modelos;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datos
 {
@@ -116,33 +112,26 @@ namespace Datos
 
         }
 
-        public void buscarDatos(CeNegocio cE)
-        {
-            try
-            {
-                MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
-                mySqlConnection.Open();
-                string Query = "select * from negocio where ciudad like '" + cE.Busqueda + "'";
-                MySqlCommand mySqlCommand = new MySqlCommand(Query, mySqlConnection);
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-
-                //MessageBox.Show("Todos los datos han sido eliminados");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex);
-                MessageBox.Show("Hubo un error");
-
-            }
-
-        }
-
         public DataSet Listar()
         {
             MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
             mySqlConnection.Open();
             string Querry = "SELECT * FROM negocio WHERE Estatus = 'Activo' LIMIT 1000;";
+            MySqlDataAdapter adaptador;
+            DataSet dataset = new DataSet();
+
+            adaptador = new MySqlDataAdapter(Querry, mySqlConnection);
+            adaptador.Fill(dataset, "tb1");
+
+
+            return dataset;
+        }
+
+        public DataSet buscarDatos(CeNegocio cE)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection(cadenaConexion);
+            mySqlConnection.Open();
+            string Querry = "SELECT * FROM negocio WHERE ciudad LIKE '%" + cE.Busqueda + "%' OR Sucursal LIKE '%" + cE.Busqueda + "%';";
             MySqlDataAdapter adaptador;
             DataSet dataset = new DataSet();
 

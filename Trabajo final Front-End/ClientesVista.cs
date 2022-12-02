@@ -104,6 +104,8 @@ namespace Trabajo_final_Front_End
         {
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+
+            cargarDatos();
         }
 
         private void btnLimpiar_Click_2(object sender, EventArgs e)
@@ -129,6 +131,9 @@ namespace Trabajo_final_Front_End
             btnEliminar.Visible = false;
             tabControl1.TabPages.Remove(tabPage2);
             tabControl1.TabPages.Add(tabPage1);
+
+            pictureBox2.Image = null;
+            tbxPrueba.Text = string.Empty;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -297,6 +302,39 @@ namespace Trabajo_final_Front_End
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbxTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Validacion de solo numeros
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void tbxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void tbxApellidos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

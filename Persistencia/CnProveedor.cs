@@ -1,11 +1,6 @@
 ﻿using Datos;
 using Entidad;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -89,8 +84,9 @@ namespace Negocio
             return cdProveedor.Listar();
         }
 
-        public void buscarEm(CeProveedor cE)
+        public DataSet buscarDatos(CeProveedor cE)
         {
+            return cdProveedor.buscarDatos(cE);
         }
     }
 }

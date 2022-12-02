@@ -75,12 +75,16 @@ namespace Trabajo_final_Front_End
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
             btnEditar.Enabled = false;
+
+            tbxPrueba.Text = string.Empty;
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
+            tbxPrueba.Text = string.Empty;
+            cargarDatos();
         }
 
         private void btnLimpiar_Click_2(object sender, EventArgs e)
@@ -135,21 +139,18 @@ namespace Trabajo_final_Front_End
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+
             CeNegocio ceNegocio = new CeNegocio();
             ceNegocio.Busqueda = tbxPrueba.Text;
-
-            if (tbxPrueba.Text != string.Empty)
+            try
             {
-                CeNegocio cE = new CeNegocio();
-                cnNegocio.buscarDatos(cE);
-            }
-            else
-            {
-                MessageBox.Show("Debes ingresar alguna busquedad en el campo");
-            }
+                dgvEmpleado.DataSource = cnNegocio.buscarDatos(ceNegocio).Tables["tb1"];
 
-            cargarDatos();
-            tbxPrueba.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
         }
         private void btnEliminar_Click_3(object sender, EventArgs e)
         {
@@ -166,20 +167,28 @@ namespace Trabajo_final_Front_End
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage2);
         }
+        private void tbxCiudad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
 
+        private void tbxSucursal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo permite letras
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
         //Metodos sin usar
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void BtnActualizar_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void lbImagen_Click(object sender, EventArgs e)
-        {
-
-        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidad
+﻿namespace Entidad
 {
     public class CeVentas
     {
@@ -13,5 +7,6 @@ namespace Entidad
         public string PrecioVenta { get; set;}
         public string Producto { get; set; }
         public string Estatus { get; set; }
+        public string Busqueda { get; set; }
     }
 }

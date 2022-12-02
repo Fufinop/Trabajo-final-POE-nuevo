@@ -174,6 +174,7 @@
             // cbxEstatus
             // 
             this.cbxEstatus.BackColor = System.Drawing.Color.White;
+            this.cbxEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstatus.Enabled = false;
             this.cbxEstatus.Items.AddRange(new object[] {
             "Activo",
@@ -208,6 +209,7 @@
             // 
             // cbxTipo
             // 
+            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipo.FormattingEnabled = true;
             this.cbxTipo.Items.AddRange(new object[] {
             "Repostero ",
@@ -264,6 +266,7 @@
             this.tbxNombre.Name = "tbxNombre";
             this.tbxNombre.Size = new System.Drawing.Size(196, 34);
             this.tbxNombre.TabIndex = 45;
+            this.tbxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxNombre_KeyPress);
             // 
             // tbxApellidos
             // 
@@ -271,6 +274,7 @@
             this.tbxApellidos.Name = "tbxApellidos";
             this.tbxApellidos.Size = new System.Drawing.Size(196, 34);
             this.tbxApellidos.TabIndex = 44;
+            this.tbxApellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxApellidos_KeyPress);
             // 
             // tbxSalario
             // 
@@ -278,6 +282,7 @@
             this.tbxSalario.Name = "tbxSalario";
             this.tbxSalario.Size = new System.Drawing.Size(196, 34);
             this.tbxSalario.TabIndex = 43;
+            this.tbxSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSalario_KeyPress);
             // 
             // nudEmpleado
             // 
