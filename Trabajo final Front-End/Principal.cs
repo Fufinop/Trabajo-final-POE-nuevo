@@ -230,6 +230,13 @@ namespace Trabajo_final_Front_End
         {
         }
 
-        
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sesion finalizada");
+
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
     }
 }
